@@ -12,12 +12,12 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <java.version>17.0.8</java.version>
-        <maven.version>3.9.3</maven.version>
-        <docker.image.prefix>kammana</docker.image.prefix>
-        <sonar.host.url>http://18.181.164.81:9000/</sonar.host.url>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+         <java.version>17</java.version>
+    <maven.version>3.9.3</maven.version>
+    <docker.image.prefix>kammana</docker.image.prefix>
+    <sonar.host.url>http://18.181.164.81:9000/</sonar.host.url>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>
