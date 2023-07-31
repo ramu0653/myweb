@@ -12,8 +12,12 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <!-- Update Java version to a compatible version -->
         <java.version>11</java.version>
+
+        <!-- Update Maven version to a compatible version -->
         <maven.version>3.8.4</maven.version>
+
         <docker.image.prefix>kammana</docker.image.prefix>
         <sonar.host.url>http://13.235.83.146:9000</sonar.host.url> <!-- Removed the extra trailing slash -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
