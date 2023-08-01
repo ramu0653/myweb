@@ -14,6 +14,7 @@
         <maven.version>3.8.4</maven.version> <!-- Updated Maven version to 3.8.4 -->
         <docker.image.prefix>kammana</docker.image.prefix>
         <sonar.host.url>http://13.127.25.92:9000/</sonar.host.url> <!-- Updated SonarQube URL -->
+        <sonar.login>25d6f74ac072acc970a722d5a2f414833c0c3557</sonar.login> <!-- Add your SonarQube token or username -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
@@ -26,6 +27,23 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Add the SonarQube plugin configuration with the updated version -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version> <!-- Update to the latest version if needed -->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
 
     <distributionManagement>
         <snapshotRepository>
