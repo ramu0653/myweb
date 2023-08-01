@@ -19,11 +19,11 @@
         <maven.version>3.8.4</maven.version>
 
         <docker.image.prefix>kammana</docker.image.prefix>
-        <sonar.host.url>http://13.235.83.146:9000</sonar.host.url> <!-- Removed the extra trailing slash -->
+        <sonar.host.url>http://13.127.25.92:9000</sonar.host.url> <!-- Removed the extra trailing slash -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- Updated SonarQube plugin version -->
-        <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>3.4.0</sonar-maven-plugin.version>
     </properties>
 
     <dependencies>
