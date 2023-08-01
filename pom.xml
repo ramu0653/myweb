@@ -1,7 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>in.javahome</groupId>
@@ -12,54 +10,31 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <!-- Update Java version to a compatible version -->
-        <java.version>11</java.version>
-
-        <!-- Update Maven version to a compatible version -->
-        <maven.version>3.8.4</maven.version>
-
+        <java.version>11</java.version> <!-- Updated Java version to 11 -->
+        <maven.version>3.8.4</maven.version> <!-- Updated Maven version to 3.8.4 -->
         <docker.image.prefix>kammana</docker.image.prefix>
-        <sonar.host.url>http://13.127.25.92:9000</sonar.host.url> <!-- Removed the extra trailing slash -->
+        <sonar.host.url>http://13.127.25.92:9000/</sonar.host.url> <!-- Updated SonarQube URL -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <!-- Updated SonarQube plugin version -->
-        <sonar-maven-plugin.version>3.3.0.1492</sonar-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <!-- Add the SonarQube plugin configuration with the updated version -->
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>${sonar-maven-plugin.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-            </plugin>
-        </plugins>
-    </build>
-
     <distributionManagement>
         <snapshotRepository>
             <id>nexusRepo</id>
-            <url>http://3.110.115.66:8081/repository/sample-snapshots/</url>
+            <url>http://18.183.142.110:8081/repository/sample-snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>nexusRepo</id>
-            <url>http://3.110.115.66:8081/repository/sample-releases/</url>
+            <url>http://18.183.142.110:8081/repository/sample-releases/</url>
         </repository>
     </distributionManagement>
 
