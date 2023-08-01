@@ -23,7 +23,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- Updated SonarQube plugin version -->
-        <sonar-maven-plugin.version>3.4.0</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>3.3.0.1492</sonar-maven-plugin.version>
     </properties>
 
     <dependencies>
