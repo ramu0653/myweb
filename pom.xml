@@ -13,8 +13,8 @@
         <java.version>11</java.version> <!-- Updated Java version to 11 -->
         <maven.version>3.8.4</maven.version> <!-- Updated Maven version to 3.8.4 -->
         <docker.image.prefix>kammana</docker.image.prefix>
-        <sonar.host.url>http://13.127.25.92:9000/</sonar.host.url> <!-- Updated SonarQube URL -->
-        <sonar.login>25d6f74ac072acc970a722d5a2f414833c0c3557</sonar.login> <!-- Add your SonarQube token or username -->
+        <sonar.host.url>http://65.2.184.41:9000/</sonar.host.url> <!-- Updated SonarQube URL -->
+        <sonar.login>7f67f725144ccd69901c440d8cd85c50262f6fae</sonar.login> <!-- Add your SonarQube token or username -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
@@ -48,11 +48,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>nexusRepo</id>
-            <url>http://18.183.142.110:8081/repository/sample-snapshots/</url>
+            <url>http://52.66.16.99:8081/repository/sample-snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>nexusRepo</id>
-            <url>http://18.183.142.110:8081/repository/sample-releases/</url>
+            <url>http://52.66.16.99:8081/repository/sample-releases/</url>
         </repository>
     </distributionManagement>
 
