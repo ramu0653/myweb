@@ -19,7 +19,7 @@ pipeline {
                                     nexusUrl: 'http://13.233.67.20:8081/', 
                                     nexusVersion: 'nexus3', 
                                     protocol: 'http', 
-                                    repository: 'http://13.233.67.20:8081/repository/sample-releases/', 
+                                    repository: 'sample-releases', 
                                     version: '8.2.0', 
                                     artifacts: [
                                         [
