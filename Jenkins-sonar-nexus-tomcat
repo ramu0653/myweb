@@ -1,50 +1,45 @@
-pipeline{
+pipeline {
     agent any
     
-    stages{
-        stage("Git Checkout"){
-            steps{
+    stages {
+        stage("Git Checkout") {
+            steps {
                 git credentialsId: 'gitrama', url: 'https://github.com/ramu0653/myweb.git'
             }
         }
-        stage("Maven Build"){
-            steps{
+        stage("Maven Build") {
+            steps {
                 sh "mvn clean sonar:sonar package"
-                
             }
         }
-        stage('Upload War To Nexus'){
-            steps{
-                  nexusArtifactUploader artifacts: [
-                       [
-                            artifactId: 'myweb', 
-                            classifier: '', 
-                            file: "target/myweb-8.2.0.war", 
-                            type: 'war'
-                       ]
-                  ], 
-                  credentialsId: 'nexus3', 
-                  groupId: 'in.javahome', 
-                  nexusUrl: '13.233.67.20:8081', 
-                  nexusVersion: 'nexus3', 
-                  protocol: 'http', 
-                  repository: 'sample-releases', 
-                  version: '8.2.0'  
-              }
+        stage('Upload War To Nexus') {
+            steps {
+                nexusArtifactUploader credentialsId: 'nexus-creds', 
+                                    groupId: 'in.javahome', 
+                                    nexusUrl: 'http://13.233.67.20:8081/', 
+                                    nexusVersion: 'nexus3', 
+                                    protocol: 'http', 
+                                    repository: 'http://13.233.67.20:8081/repository/sample-releases/', 
+                                    version: '8.2.0', 
+                                    artifacts: [
+                                        [
+                                            artifactId: 'myweb', 
+                                            classifier: '', 
+                                            file: "target/myweb-8.2.0.war", 
+                                            type: 'war'
+                                        ]
+                                    ]
             }
-        stage("deploy-dev"){
-            steps{
+        }
+        stage("deploy-dev") {
+            steps {
                 sshagent(['tomcat-new']) {
-                sh """
-                    scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@3.108.227.125:/home/ec2-user/apache-tomcat-9.0.78/webapps/
-                    
-                    ssh ec2-user@3.108.227.125 /home/ec2-user/apache-tomcat-9.0.78/bin/shutdown.sh
-                    
-                    ssh ec2-user@3.108.227.125 /home/ec2-user/apache-tomcat-9.0.78/bin/startup.sh
-                
-                """
-            }
-            
+                    sh """
+                        scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@3.108.227.125:/home/ec2-user/apache-tomcat-9.0.78/webapps/
+                        ssh ec2-user@3.108.227.125 /home/ec2-user/apache-tomcat-9.0.78/bin/shutdown.sh
+                        ssh ec2-user@3.108.227.125 /home/ec2-user/apache-tomcat-9.0.78/bin/startup.sh
+                    """
+                }
             }
         }
     }
