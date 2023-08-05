@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage("Git Checkout") { 
+        stage("Git Checkout") {
             steps {
                 git credentialsId: 'gitrama', url: 'https://github.com/ramu0653/myweb.git'
             }
@@ -19,7 +19,7 @@ pipeline {
                                     nexusUrl: 'http://13.126.217.138:8081/', 
                                     nexusVersion: 'nexus3', 
                                     protocol: 'http', 
-                                    repository: 'sample-releases', 
+                                    repository: 'http://13.126.217.138:8081/repository/sample-releases/', 
                                     version: '8.2.0', 
                                     artifacts: [
                                         [
