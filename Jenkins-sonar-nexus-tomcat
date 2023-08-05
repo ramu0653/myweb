@@ -13,32 +13,32 @@ pipeline {
             }
         }
         stage('Upload War To Nexus') {
-    steps {
-        nexusArtifactUploader credentialsId: 'nexus-creds', 
-                            groupId: 'in.javahome', 
-                            nexusUrl: 'http://13.233.67.20:8081/', 
-                            nexusVersion: 'nexus3', 
-                            protocol: 'http', 
-                            repository: 'sample-releases', 
-                            version: '8.2.0', 
-                            artifacts: [
-                                [
-                                    artifactId: 'myweb', 
-                                    classifier: '', 
-                                    file: "target/myweb-8.2.0.war", 
-                                    type: 'war'
-                                ]
-                            ]
-    }
-}
+            steps {
+                nexusArtifactUploader credentialsId: 'nexus-cred', 
+                                    groupId: 'in.javahome', 
+                                    nexusUrl: 'http://13.126.217.138:8081/', 
+                                    nexusVersion: 'nexus3', 
+                                    protocol: 'http', 
+                                    repository: 'sample-releases', 
+                                    version: '8.2.0', 
+                                    artifacts: [
+                                        [
+                                            artifactId: 'myweb', 
+                                            classifier: '', 
+                                            file: "target/myweb-8.2.0.war", 
+                                            type: 'war'
+                                        ]
+                                    ]
+            }
+        }
 
         stage("deploy-dev") {
             steps {
                 sshagent(['tomcat-new']) {
                     sh """
-                        scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@3.108.227.125:/home/ec2-user/apache-tomcat-9.0.78/webapps/
-                        ssh ec2-user@3.108.227.125 /home/ec2-user/apache-tomcat-9.0.78/bin/shutdown.sh
-                        ssh ec2-user@3.108.227.125 /home/ec2-user/apache-tomcat-9.0.78/bin/startup.sh
+                        scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@13.234.202.21:/home/ec2-user/apache-tomcat-9.0.78/webapps/
+                        ssh ec2-user@13.234.202.21 /home/ec2-user/apache-tomcat-9.0.78/bin/shutdown.sh
+                        ssh ec2-user@13.234.202.21 /home/ec2-user/apache-tomcat-9.0.78/bin/startup.sh
                     """
                 }
             }
