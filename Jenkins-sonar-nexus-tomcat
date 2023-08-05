@@ -13,24 +13,25 @@ pipeline {
             }
         }
         stage('Upload War To Nexus') {
-            steps {
-                nexusArtifactUploader credentialsId: 'nexus-creds', 
-                                    groupId: 'in.javahome', 
-                                    nexusUrl: 'http://13.233.67.20:8081/', 
-                                    nexusVersion: 'nexus3', 
-                                    protocol: 'http', 
-                                    repository: 'sample-releases', 
-                                    version: '8.2.0', 
-                                    artifacts: [
-                                        [
-                                            artifactId: 'myweb', 
-                                            classifier: '', 
-                                            file: "target/myweb-8.2.0.war", 
-                                            type: 'war'
-                                        ]
-                                    ]
-            }
-        }
+    steps {
+        nexusArtifactUploader credentialsId: 'nexus-creds', 
+                            groupId: 'in.javahome', 
+                            nexusUrl: 'http://13.233.67.20:8081/', 
+                            nexusVersion: 'nexus3', 
+                            protocol: 'http', 
+                            repository: 'sample-releases', 
+                            version: '8.2.0', 
+                            artifacts: [
+                                [
+                                    artifactId: 'myweb', 
+                                    classifier: '', 
+                                    file: "target/myweb-8.2.0.war", 
+                                    type: 'war'
+                                ]
+                            ]
+    }
+}
+
         stage("deploy-dev") {
             steps {
                 sshagent(['tomcat-new']) {
