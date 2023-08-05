@@ -18,21 +18,21 @@ pipeline {
         }
         stage('Upload War To Nexus') {
             steps {
-                nexusArtifactUploader credentialsId: 'nexus-cred', 
-                                    groupId: 'in.javahome', 
-                                    nexusUrl: 'http://13.126.217.138:8081/', 
-                                    nexusVersion: 'nexus3', 
-                                    protocol: 'http', 
-                                    repository: 'sample-releases', 
-                                    version: '8.2.0', 
-                                    artifacts: [
-                                        [
-                                            artifactId: 'myweb', 
-                                            classifier: '', 
-                                            file: "target/myweb-8.2.0.war", 
-                                            type: 'war'
-                                        ]
-                                    ]
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'myweb',
+                        classifier: '',
+                        file: 'target/myweb-8.2.0.war',
+                        type: 'war'
+                    ]
+                ],
+                credentialsId: 'nexus3',
+                groupId: 'in.javahome',
+                nexusUrl: 'http://172.31.41.226:8081',
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: 'sample-releases',
+                version: '8.2.0'
             }
         }
         stage("deploy-dev") {
