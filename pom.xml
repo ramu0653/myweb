@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -10,11 +11,11 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <java.version>11</java.version> <!-- Updated Java version to 11 -->
-        <maven.version>3.8.4</maven.version> <!-- Updated Maven version to 3.8.4 -->
+        <java.version>11</java.version>
+        <maven.version>3.8.4</maven.version>
         <docker.image.prefix>kammana</docker.image.prefix>
-        <sonar.host.url>http://3.111.187.252:9000/</sonar.host.url> <!-- Updated SonarQube URL -->
-        <sonar.login>c8d4c33a7bf5b84118ca6012ce82508019f2e390</sonar.login> <!-- Add your SonarQube token or username -->
+        <sonar.host.url>http://3.111.187.252:9000/</sonar.host.url>
+        <sonar.login>c8d4c33a7bf5b84118ca6012ce82508019f2e390</sonar.login>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
@@ -30,13 +31,14 @@
 
     <build>
         <plugins>
-            <!-- Add the SonarQube plugin configuration with the updated version -->
+            <!-- SonarQube Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.1.2184</version> <!-- Update to the latest version if needed -->
+                <version>3.9.1.2184</version>
             </plugin>
-
+            
+            <!-- Maven War Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
