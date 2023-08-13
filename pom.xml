@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,7 +11,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <maven.version>3.0.5</maven.version>
+        <maven.version>3.1.0</maven.version> <!-- Updated Maven version to 3.1.0 -->
         <docker.image.prefix>kammana</docker.image.prefix>
         <sonar.host.url>http://3.111.187.252:9000/</sonar.host.url>
         <sonar.login>c8d4c33a7bf5b84118ca6012ce82508019f2e390</sonar.login>
