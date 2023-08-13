@@ -12,7 +12,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <maven.version>3.8.4</maven.version>
+        <maven.version>3.0.5</maven.version>
         <docker.image.prefix>kammana</docker.image.prefix>
         <sonar.host.url>http://3.111.187.252:9000/</sonar.host.url>
         <sonar.login>c8d4c33a7bf5b84118ca6012ce82508019f2e390</sonar.login>
