@@ -1,16 +1,10 @@
 pipeline{
     agent any
-     tools {
-        maven 'Maven-3.6.1'
-    }
     
-    environment{
-        PATH = "/opt/maven3/bin:$PATH"
-    }
     stages{
         stage("Git Checkout"){
             steps{
-                git credentialsId: 'javahome2', url: 'https://github.com/srinivas1987devops/myweb.git'
+                git credentialsId: 'gitrama', url: 'https://github.com/ramu0653/myweb.git'
             }
         }
         stage("Maven Build"){
@@ -31,7 +25,7 @@ pipeline{
                   ], 
                   credentialsId: 'nexus3', 
                   groupId: 'in.javahome', 
-                  nexusUrl: '172.31.36.181:8081', 
+                  nexusUrl: '52.66.16.99:8081', 
                   nexusVersion: 'nexus3', 
                   protocol: 'http', 
                   repository: 'sample-releases', 
@@ -40,17 +34,17 @@ pipeline{
             }
         stage('Build Docker Image'){
             steps{
-                 sh 'docker build -t deepikac2021/spring-boot-mongo .'
+                 sh 'docker build -t ramu0653/spring-boot-mongo .'
                  sh 'docker build -t tomcat:${BUILD_NUMBER} .'
-                 sh 'docker run -itd --name srini36 -p 2900:8080 tomcat:${BUILD_NUMBER}'
+                 sh 'docker run -itd --name tomcatrama -p 2900:8080 tomcat:${BUILD_NUMBER}'
              }
          }
         stage('Push Docker Image'){
              steps{
                   withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
-                      sh "docker login -u deepikac2021 -p ${DOCKER_HUB_CREDENTIALS}"
+                      sh "docker login -u ramu0653 -p ${DOCKER_HUB_CREDENTIALS}"
             }
-            sh 'docker push deepikac2021/spring-boot-mongo'
+            sh 'docker push ramu0653/spring-boot-mongo'
         }
       }
         
