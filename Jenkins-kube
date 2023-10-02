@@ -24,9 +24,9 @@ pipeline {
                 ], 
                 credentialsId: 'nexus3', 
                 groupId: 'in.javahome', 
-                nexusUrl: 'http://3.110.161.229:8081',  // Added 'http://' protocol
+                nexusUrl: '3.110.161.229:8081', 
                 nexusVersion: 'nexus3', 
-                protocol: 'http',  // Added protocol field
+                protocol: 'http',  
                 repository: 'sample-releases', 
                 version: '8.2.0'
             }
